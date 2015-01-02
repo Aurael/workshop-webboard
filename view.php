@@ -217,8 +217,9 @@ if ($topic['num_comments']) {
 	คำนวณ offset เริ่มต้นที่จะกำหนดใน LIMIT ซึ่ง offset ของแถวแรกเริ่มที่ 0 ไม่ใช่ 1
 	ถ้าอยู่ที่หน้า 1 ก็จะได้ LIMIT 0, 100
 	ถ้าอยู่ที่หน้า 3 ก็จะได้ LIMIT 200, 100
+	ใช้ abs() เพื่อป้องกัน $START_OFFSET เป็นเลขที่น้อยกว่า 0
 	*/
-	$START_OFFSET = ($PAGE - 1) * $ITEMS_PER_PAGE;
+	$START_OFFSET = abs($PAGE - 1) * $ITEMS_PER_PAGE;
 	/*
 	SELECT และอ่านข้อมูลความเห็นเข้ามาไว้ใน $ITEMS (ดู index.php)
 	*/
